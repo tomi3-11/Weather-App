@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Styling -->
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 1rem;
+            border: none;
+            background: lightblue;
+            margin-bottom: 10px;
+        }
+        .weather-box {
+            border: 1px solid #000;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            margin: 10px 0;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            border: none;
+            background: gray;
+            color: #f8f6f6;
+        }
+        h1 {
+            color: rgb(39, 33, 82);
+            font-weight: 900;
+            font-size: 3rem;
+            font-family: lucida caligraphy;
+        }
+     </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required> <br>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <div class="weather-box">
+            <h2>{{ weather.city }}, {{ weather.country }}</h2>
+            <p><strong>Temperature:</strong> {{ weather.temp }}</p>
+            <p><strong>Humidity:</strong> {{ weather.humidity }}</p>
+            <p><strong>Condition:</strong> {{ weather.description }}</p>
+        </div>
+    {% elif error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
